@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'products#index'
 
   resources :products, except: [:index]
-    resources :mid_category, only: :new
+    resources :mid_category, only: :new 
     resources :small_category, only: :new
 
   devise_for :users, controllers: {

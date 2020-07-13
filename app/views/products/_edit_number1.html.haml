@@ -1,0 +1,192 @@
+.listing-submission
+  .listing-submission__container
+    = form_with(model: @product, local: true) do |f|
+      .listing-submission__top
+        商品の情報を入力
+      .listing-submission__top__section
+        .listing-submission__top__upload-box
+          .listing-submission__top__content__head
+            出品画像
+            .listing-submission__form-require
+              必須
+        .listing-submission__text
+          最大10枚までアップロードできます
+      
+        #image-box-1
+          .camera-box.item-num-0#image-box__container
+            = f.fields_for :images do |image|
+              .js-file_group{"data-index" => "#{image.index}"}
+              .listing-submission__upload__container
+                %label.upload-label
+                  .listing-submission__upload__drop__box
+                    = image.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+                    %label{for: "img-file"}
+                      %i.fas.fa-camera
+                  .upload-label__text
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+        .listing-submission__no-image
+
+      .listing-submission__sell__content
+        .listing-submission__group
+          .listing-submission__content__head
+            = f.label :name,"商品名"
+            %span.listing-submission__form-require
+              必須
+          = f.text_field :name, class:"name__text__field",placeholder: "必須 40文字まで"
+        .listing-submission__no-product.no-product__name
+        .listing-submission__text-area-group
+          .listing-submission__content__head
+            = f.label :description, "商品の説明"
+            %span.listing-submission__form-require
+              必須
+          =f.text_area :description, class:"content__text__area",placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        .listing-submission__no-product.no-product__text
+
+      .listing-submission__product__details
+        %h3.listing-submission__product__details__name 商品の詳細
+        .listing-submission__details__form__box
+          .listing-submission__details__form__category
+            .listing-submission__select--wrap
+              = f.label :category_id, "カテゴリー" ,class: "listing-submission__content__head"
+              %span.listing-submission__form-require 必須
+              .sell__about__right__wrap-box.parent
+                = f.collection_select(:category_id, Category.where(ancestry: nil), :id, :name, {prompt: "--", serected: @product.category.parent.parent_id}, {id: "parent"})
+              .child
+                = f.collection_select(:category_id, @product.category.parent.parent.children, :id, :name, {prompt: "--", serected: @product.category.parent_id}, {id: "child"})
+              .grand_child
+                = f.collection_select(:category_id, @product.category.parent.children, :id, :name, {prompt: "--", serected: @product.category.id}, {id: "grand_child"})
+              .listing-submission__no-product
+
+          .listing-submission__details__form
+            .listing-submission__content__head
+              = f.label :ブランド
+              %span.listing-submission__form-require2 任意
+            .listing-submission__select--wrap
+              = f.text_field :brand, class: "brand__select", placeholder: "例）シャネル"
+
+          .listing-submission__details__form
+            .listing-submission__content__head
+              = f.label :size,"サイズ"
+              %span.listing-submission__form-require 必須
+              .select--wrap
+                = f.select :size, Product.sizes_i18n.invert, {include_blank: '選択してください'}, class: "select-size"
+                .listing-submission__no-product.no-product__size
+                
+          .listing-submission__details__form
+            .listing-submission__content__head
+              = f.label :condition,"商品の状態"
+              %span.listing-submission__form-require 必須
+              .listing-submission__select--wrap
+                = f.select :condition, Product.conditions_i18n.invert, {include_blank: '選択してください'}, class: "select-condition"
+                .listing-submission__no-product.no-product__condition
+
+      .listing-submission__delivery__form
+        .listing-submission__delivery__top
+          %h3.listing-submission___about__delivery 配送について
+          =link_to "#", class: 'form__question' do
+            ?
+        .listing-submission__delivery__form__box
+          .listing-submission__details__form
+            .listing-submission__content__head
+              = f.label :send_price,"配送料の負担"
+              %span.listing-submission__form-require 必須
+            .listing-submission__select--wrap
+              = f.select :send_price, Product.send_prices_i18n.invert, {include_blank: '選択してください'}, class: "select-send_price"
+              .listing-submission__no-product.no-product__send_price
+          
+          .listing-submission__details__form
+            .listing-submission__content__head
+              発送元の地域
+              %span.listing-submission__form-require 必須
+            .listing-submission__select--wrap
+              = f.collection_select(:prefecture, Prefecture.all, :id, :name, {include_blank: '選択してください'}, class: "select-prefecture")
+              .listing-submission__no-product.no-product__prefecture
+
+          .listing-submission__details__form
+            .listing-submission__content__head
+              = f.label :ship_day,"発送までの日数"
+              %span.listing-submission__form-require 必須
+            .listing-submission__select--wrap
+              = f.select :shipping_date, Product.shipping_dates_i18n.invert, {include_blank: '選択してください'}, class: "select-shipping_date"
+              .listing-submission__no-product.no-product__shipping_date
+      
+      .listing-submission__price__content
+        .listing-submission__price__content__amount
+          %p.amount-of-money
+            価格(¥300〜9,999,999)
+          =link_to "#", class: 'form__question' do
+            ?
+        .listing-submission__price__form
+          .listing-submission__input-price
+            .listing-submission__content__head__price
+              = f.label :price,"販売価格"
+              %span.listing-submission__form-require 必須
+            %span.doll-mark
+              ¥
+            .listing-submission__enter-price--box
+              .listing-submission__enter-price
+                = f.number_field :price, placeholder: "0", class: "mix-price"
+                .listing-submission__no-product.no-product__price
+          
+        .listing-submission__commission
+          .listing-submission__commission-box
+            .listing-submission__commission-font{"data-test" => "fee-label"}
+              %div
+                販売手数料（10%）
+            %span.commission-money{"data-test" => "fee-value"}
+              
+        .listing-submission__profit
+          .listing-submission__profit-box
+            .listing-submission__profit-font{"data-test" => "fee-label"}
+              %div
+                販売利益
+            %span.profit-money{"data-test" => "fee-value"}
+                
+      .listing-submission__send__btn
+        .listing-submission__send__box
+          = f.submit "出品する", class: "exhibition-btn"
+          %a.back-btn{:href => "#"}
+            もどる
+      .listing-submission__text__content
+        .listing-submission__first__line
+          .listing-submission__first__line__text
+            禁止されている
+          .listing-submission__first__line__text2
+            =link_to "#", class: 'sell__content__text' do
+              行為
+          および
+          =link_to "#", class: 'sell__content__text' do
+            出品物
+          を必ずご確認ください。
+          .listing-submission__first__line__text3
+            =link_to "#", class: 'sell__content__text' do
+              偽ブランドや
+          .listing-submission__first__line__text4
+            =link_to "#", class: 'sell__content__text' do
+              盗品物
+          などの販売は犯罪であり、法律に
+        .listing-submission__second__line
+          .listing-submission__second__line__text
+            より処罰される可能性があります。また、出品をもちまして
+          .listing-submission__second__line__text2
+            =link_to "#", class: 'sell__content__text' do
+              加盟店規約
+            に同意したことになります。
+.exhibit__footer
+  .exhibit__footer__content
+    .exhibit__footer__content__main
+      %ul.exhibit__footer__lists
+        %li.exhibit__footer__list
+          プライバシーポリシー
+        %li.exhibit__footer__list
+          フリマ利用規約
+        %li.exhibit__footer__list
+          特定商取引に関する表記
+      .exhibit__footer__copyright
+        = link_to root_path, class: "exhibit__footer__logo" do
+          =image_tag("material/logo/logo.png", width:"160",height:"50")
+        %p
+          %small 
+            © FURIMA, Inc.

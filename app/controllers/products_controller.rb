@@ -34,8 +34,12 @@ class ProductsController < ApplicationController
   def show
   end
 
+  def edit
+    
+  end
+
   def update
-    if @product.update(product_params)
+    if params[:product][:images_attributes] && @product.update(product_params)
       redirect_to root_path
     else
       render :edit
