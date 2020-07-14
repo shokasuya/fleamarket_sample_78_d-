@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if params[:product][:images_attributes] && @product.update(product_params)
+    if params[:product][:images_attributes] && @product.update(edit_product_params)
       redirect_to root_path
     else
       render :edit
@@ -76,10 +76,21 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(:name, :price, :description, :size, :brand, :status, :condition, :send_price, 
-                                    :shipping_date, images_attributes: [:image])
+                                    :shipping_date, images_attributes: [:image, :id])
                             .merge(user_id: current_user.id, category_id: params[:product][:category_id],
                               prefecture_id: params[:product][:prefecture], status: 0)
   end
+
+  def edit_product_params
+    params.require(:product).permit(:name, :price, :description, :size, :brand, :status, :condition, :send_price, 
+                                  :shipping_date, :category_id, :prefecture_id, images_attributes: [:image, :id])
+                            .merge(user_id: current_user.id, status: 0)
+  end
+
+
+
+
+
 
   def set_product
     @product = Product.find(params[:id])

@@ -19,7 +19,7 @@
               .listing-submission__upload__container
                 %label.upload-label
                   .listing-submission__upload__drop__box
-                    = image.file_field :image, type: 'file', name: "product[images_attributes][][image]", value:"", style: "display:none", id:"img-file"
+                    = image.file_field :image, type: 'file', name: "product[images_attributes][0][image]", value:"", style: "display:none", id:"img-file"
                     %label{for: "img-file"}
                       %i.fas.fa-camera
                   .upload-label__text
@@ -101,7 +101,7 @@
               発送元の地域
               %span.listing-submission__form-require 必須
             .listing-submission__select--wrap
-              = f.collection_select(:prefecture, Prefecture.all, :id, :name, {include_blank: '選択してください'}, class: "select-prefecture")
+              = f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {include_blank: '選択してください'}, class: "select-prefecture")
               .listing-submission__no-product.no-product__prefecture
 
           .listing-submission__details__form
