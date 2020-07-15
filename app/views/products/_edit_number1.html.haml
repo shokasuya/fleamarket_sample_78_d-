@@ -26,6 +26,12 @@
                     ドラッグアンドドロップ
                     %br
                     またはクリックしてファイルをアップロード
+                    - @product.images.each do |image|
+                      = image_tag image.image.url
+                  
+
+
+                   
         .listing-submission__no-image
 
       .listing-submission__sell__content
