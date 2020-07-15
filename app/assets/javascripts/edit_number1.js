@@ -69,14 +69,15 @@ $(document).on('turbolinks:load', function(){
     });
 
     // 画像の削除
-    $(document).on('click', '.delete-box', function() {
+    $(document).on('click', '.item-image__buttons--delete', function() {
+      // console.log("this")
       var count = $('.preview-box').length;
       setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
-      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      // var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
-      $(`#preview-box__${id}`).remove();
-      console.log("new")
+      $(`#image-box__container`).remove();
+      // console.log("new")
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_image`).val("");
 

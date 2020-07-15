@@ -13,21 +13,32 @@
           最大10枚までアップロードできます
       
         #image-box-1
-          .camera-box.item-num-0#image-box__container
+          .camera-box.product-num-0#image-box__container
+          
+            - @product.images.each_with_index do |image, i|
+              .product-image
+                .product-image__content
+                  = image_tag image.image.url
+                .product-image__operetion
+                  .product-image__operetion--edit
+                    編集
+                  .product-image__operetion--delete
+                    削除
             = f.fields_for :images do |image|
               .js-file_group{"data-index" => "#{image.index}"}
               .listing-submission__upload__container
                 %label.upload-label
                   .listing-submission__upload__drop__box
                     = image.file_field :image, type: 'file', name: "product[images_attributes][0][image]", value:"", style: "display:none", id:"img-file"
-                    %label{for: "img-file"}
-                      %i.fas.fa-camera
-                  .upload-label__text
-                    ドラッグアンドドロップ
-                    %br
-                    またはクリックしてファイルをアップロード
-                    - @product.images.each do |image|
-                      = image_tag image.image.url
+                    =image .hidden_field :_destroy, data:{index: image.index}, valu: 0, class:"delete_img_#{image.index}"
+                  -#   %label{for: "img-file"}
+                  -#     %i.fas.fa-camera
+                  -# .upload-label__text
+                  -#   ドラッグアンドドロップ
+                  -#   %br
+                  -#   またはクリックしてファイルをアップロード
+                  -#   - @product.images.each do |image|
+                  -#     = image_tag image.image.url
                   
 
 
