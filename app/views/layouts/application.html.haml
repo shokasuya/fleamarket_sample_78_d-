@@ -4,6 +4,7 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title FleamarketSample78D
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -14,7 +15,8 @@
         .header-inner__main
           %h1.header-inner__main--icon
             %a.header-inner__main--icon__img
-              = image_tag 'material/logo/logo.png', alt: 'FURIMA', class: 'header-inner__main--icon__img__tag'
+              = link_to root_path, class: "exhibit__footer__logo" do
+                =image_tag("material/logo/logo.png", width:"160",height:"50" )
           .header-inner__main--search-box
             %form.header-inner__main--search-box__form{"accept-charset" => "UTF-8", action: "#", method: "get"}
               %input.header-inner__main--search-box__form__input{name: "utf8", type: "hidden", value: "✓"}
