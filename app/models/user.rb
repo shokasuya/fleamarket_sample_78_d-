@@ -7,7 +7,14 @@ class User < ApplicationRecord
   has_one :address
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
+
+  has_many :favorites
+  has_many :favorites, through: :favorites, source: :product
  
   has_many :cards
   has_many :products
+
+  def favorited_by?(product_id)
+    favorites.where(product_id: product_id).exists?
+  end
 end

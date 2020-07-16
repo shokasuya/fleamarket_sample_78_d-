@@ -92,6 +92,8 @@
                 発送日の目安
               %td
                 = @product.shipping_date_i18n
+      %ul#favoriteBtn
+        = render partial: 'favorites/favorite', locals: { product: @product}
   .links
     .links__around
       = link_to "#", class: "links__around__ahead" do

@@ -14,7 +14,7 @@
           やることリスト
           %i.fas.fa-angle-right
       %li
-        =link_to "#", class: "mypage-nav-list-item" do
+        =link_to product_favorites_path(@product), class: "mypage-nav-list-item" do
           いいね！一覧
           %i.fas.fa-angle-right
       %li
@@ -69,7 +69,7 @@
           発送元・お届け先住所変更
           %i.fas.fa-angle-right  
       %li
-        =link_to card_user_path, class: "mypage-nav-list-setting-item" do
+        =link_to "#", class: "mypage-nav-list-setting-item" do
           支払い方法
           %i.fas.fa-angle-right 
       %li
@@ -85,6 +85,6 @@
           電話番号の確認
           %i.fas.fa-angle-right
       %li
-        =link_to  logout_user_path, class: "mypage-nav-list-setting-item" do
+        =link_to  "#", class: "mypage-nav-list-setting-item" do
           ログアウト
           %i.fas.fa-angle-right

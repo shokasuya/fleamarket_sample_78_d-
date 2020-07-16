@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :show]
 
-  resources :products
+  resources :products do
+    resources :favorites , only: [:index, :create, :destroy]
+  end
   get 'products/new/mid_category', to: 'products#mid_category'
   get 'products/new/small_category', to: 'products#small_category'
 
