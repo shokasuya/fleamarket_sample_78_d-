@@ -31,7 +31,7 @@ $(document).on('turbolinks:load', function(){
     $(document).on('change', '.hidden-field', function() {
       setLabel();
       //hidden-fieldのidの数値のみ取得
-      var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      // var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //labelボックスのidとforを更新
       $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
       //選択したfileのオブジェクトを取得
@@ -69,8 +69,8 @@ $(document).on('turbolinks:load', function(){
     });
 
     // 画像の削除
-    $(document).on('click', '.item-image__buttons--delete', function() {
-      // console.log("this")
+    $(document).on('click', '.product-image__operetion--delete', function() {
+      console.log("this")
       var count = $('.preview-box').length;
       setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
