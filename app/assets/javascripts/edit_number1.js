@@ -20,12 +20,12 @@ $(document).on('turbolinks:load', function(){
     }
 
     // ラベルのwidth操作
-    function setLabel() {
-      //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
-      var prevContent = $('.label-content').prev();
-      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-      $('.label-content').css('width', labelWidth);
-    }
+    // function setLabel() {
+    //   //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
+    //   var prevContent = $('.label-content').prev();
+    //   labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+    //   $('.label-content').css('width', labelWidth);
+    // }
 
     // プレビューの追加
     $(document).on('change', '.hidden-field', function() {
@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function(){
       //hidden-fieldのidの数値のみ取得
       // var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //labelボックスのidとforを更新
-      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      $('.label-box').attr({id: `label-box--${id}`,for: `product_images_attributes_${id}_image`});
       //選択したfileのオブジェクトを取得
       var file = this.files[0];
       var reader = new FileReader();
@@ -76,7 +76,7 @@ $(document).on('turbolinks:load', function(){
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       // var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
-      $(`#image-box__container`).remove();
+      $(`.product-image__content--icon`).remove();
       // console.log("new")
       //フォームの中身を削除 
       $(`#item_images_attributes_${id}_image`).val("");

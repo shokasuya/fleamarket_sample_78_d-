@@ -135,24 +135,18 @@
   .product-num-9{
     width: 106px;
   }
-
-
   .product-image__operetion{
     display: flex;
-    &--delete{
     text-align: center;
     font-weight: bold;
     color: #2646f8;
     box-shadow: 0 0 6px rgba(41, 41, 41, 0.2);
+    &__edit{}
+    &__delete{}
   }
+  
 
-    &--edit{
-    text-align: center;
-    font-weight: bold;
-    color: #2646f8;
-    box-shadow: 0 0 6px rgba(41, 41, 41, 0.2);
-  }
-}
+
 
 
 

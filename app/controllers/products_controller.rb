@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_product, except: [:index, :new, :create, :mid_category, :small_category]
+  before_action :set_product, except: [:index, :new, :create, :mid_category, :small_category, :edit]
   before_action :set_categories, only: [:edit, :update]
 
   def index
@@ -35,7 +35,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-
+    @product=Product.find(params[:id])
+    @product.images.new
   end
 
   def update
@@ -83,7 +84,7 @@ class ProductsController < ApplicationController
 
   def edit_product_params
     params.require(:product).permit(:name, :price, :description, :size, :brand, :status, :condition, :send_price, 
-                                  :shipping_date, :category_id, :prefecture_id, images_attributes: [:image, :id])
+                                  :shipping_date, :category_id, :prefecture_id, images_attributes: [:image, :id, :_destroy])
                             .merge(user_id: current_user.id, status: 0)
   end
 
