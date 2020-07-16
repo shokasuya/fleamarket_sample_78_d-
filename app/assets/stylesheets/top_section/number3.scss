@@ -57,6 +57,7 @@
   background-color: white;
     color: #333;
     padding: 16px;
+    position: relative;
 
     &__name{
       overflow: hidden;
@@ -92,6 +93,12 @@
     letter-spacing: 2px;
     font-weight: 600;
   }
+}
+
+.content__favorite{
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 
 .listBtn{
