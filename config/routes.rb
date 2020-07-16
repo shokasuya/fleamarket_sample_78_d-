@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  get 'card/new'
-  get 'card/show'
   root to: 'products#index'
 
   resources :products, except: [:index]
     resources :mid_category, only: :new
     resources :small_category, only: :new
+
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -18,21 +17,35 @@ Rails.application.routes.draw do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
 
-  resources :users, only: [:show, :index]do
+  resources :users, only: [:show]do
     member do   
       get 'logout'
-      get "card"
     end
   end  
+
   
-  resources :users, only: [:new, :show]
+ 
+
+
 
   resources :products do
     resources :favorites , only: [:index, :create, :destroy]
   end
+  post '/products/:id/purchase',to: 'products#purchase'
   get 'products/new/mid_category', to: 'products#mid_category'
   get 'products/new/small_category', to: 'products#small_category'
+ 
 
+  resources :products do
+    member do
+      post 'purchase'
+      get 'buy'
+      get 'purchased'
+    end  
+    get 'products/new/mid_category', to: 'products#mid_category'
+    get 'products/new/small_category', to: 'products#small_category'
+  end  
+  
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
@@ -41,5 +54,4 @@ Rails.application.routes.draw do
     end
   end
 end
-
 
