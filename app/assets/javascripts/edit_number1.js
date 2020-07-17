@@ -20,12 +20,12 @@ $(document).on('turbolinks:load', function(){
     }
 
     // ラベルのwidth操作
-    // function setLabel() {
-    //   //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
-    //   var prevContent = $('.label-content').prev();
-    //   labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
-    //   $('.label-content').css('width', labelWidth);
-    // }
+    function setLabel() {
+      //プレビューボックスのwidthを取得し、maxから引くことでラベルのwidthを決定
+      var prevContent = $('.label-content').prev();
+      labelWidth = (620 - $(prevContent).css('width').replace(/[^0-9]/g, ''));
+      $('.label-content').css('width', labelWidth);
+    }
 
     // プレビューの追加
     $(document).on('change', '.hidden-field', function() {
@@ -70,29 +70,27 @@ $(document).on('turbolinks:load', function(){
 
     // 画像の削除
     $(document).on('click', '.product-image__operetion--delete', function() {
-      console.log("this")
-      var count = $('.preview-box').length;
-      setLabel(count);
+      // console.log($(this))
+      // var count = $('.preview-box').length;
+      // console.log($(this).parent().parent())
+      // setLabel(count);
       //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
       // var id = $(this).attr('id').replace(/[^0-9]/g, '');
       //取得したidに該当するプレビューを削除
-      $(`.product-image__content--icon`).remove();
+      $(this).parent().parent().remove();
       // console.log("new")
-      //フォームの中身を削除 
-      $(`#item_images_attributes_${id}_image`).val("");
-
-      //削除時のラベル操作
-      var count = $('.preview-box').length;
-      //5個めが消されたらラベルを表示
-      if (count == 4) {
-        $('.label-content').show();
-      }
-      setLabel(count);
-
-      if(id < 5){
-        //削除された際に、空っぽになったfile_fieldをもう一度入力可能にする
-        $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
-      }
     });
-  });
+    // 画像の編集
+    $(document).on('click', '.product-image__operetion--edit', function() {
+      // console.log($(this))
+      // var count = $('.preview-box').length;
+      // console.log($(this).parent().parent())
+      // setLabel(count);
+      //item_images_attributes_${id}_image から${id}に入った数字のみを抽出
+      // var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      //取得したidに該当するプレビューを削除
+      $(this).parent().parent().remove();
+      // console.log("new")
+    });
+})
 })

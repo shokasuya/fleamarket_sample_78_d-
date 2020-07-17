@@ -138,6 +138,7 @@
 
 
   .product-image__operetion{
+    justify-content: space-around;
     display: flex;
     &--delete{
     text-align: center;
@@ -153,7 +154,6 @@
     box-shadow: 0 0 6px rgba(41, 41, 41, 0.2);
   }
 }
-
 
 
   .product-image__operetion--delete:hover{

@@ -63,7 +63,8 @@
             - if image.persisted?
               .product-image
                 .product-image__content
-                  = image_tag image.image
+                  .product-image__content--icon
+                    = image_tag image.image.url, :width => "114", :height => "80"
                 .product-image__operetion
                   .product-image__operetion--edit
                     編集
@@ -83,12 +84,6 @@
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
-
-
-
-
-
-
 
         .listing-submission__no-image
 
@@ -210,7 +205,7 @@
                 
       .listing-submission__send__btn
         .listing-submission__send__box
-          = f.submit "出品する", class: "exhibition-btn"
+          = f.submit "編集する", class: "exhibition-btn"
           %a.back-btn{:href => "#"}
             もどる
       .listing-submission__text__content
