@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      card: カード
+    attributes:
+      card:
+        user_id: ユーザーID
+        customer_id: カスタマーID
+        card_id: カードID
