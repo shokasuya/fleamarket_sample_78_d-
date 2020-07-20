@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
       @product.images.new
       @parent = Category.where(ancestry: nil)
     else
+      @parent = Category.where(ancestry: nil)
       redirect_to root_path
     end
   end
@@ -27,7 +28,9 @@ class ProductsController < ApplicationController
     if params[:product][:images_attributes] && @product.save
       redirect_to root_path
     else
-      redirect_to root_path
+      @parent = Category.where(ancestry: nil)
+      flash.now[:alert] = '未入力項目があります'
+      render :new
     end
   end
 
