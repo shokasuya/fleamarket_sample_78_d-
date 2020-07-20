@@ -6,6 +6,7 @@ ja:
         nickname: "ニックネーム"
         email: Eメール
         password: パスワード 
+        password_confirmation: パスワード（確認用）
         first name: 名前 
         last name: 苗字
         First name kana: 名前のカナ

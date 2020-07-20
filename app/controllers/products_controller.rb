@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
       currency: 'jpy'
     )
     @product.update(status: 1)
-    redirect_to root_path
+    redirect_to  buy_product_path
   else 
     flash[:notice] = "payjp以外が原因でクレジットカードでの支払いに失敗しました。"
     render :show

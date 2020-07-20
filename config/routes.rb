@@ -27,7 +27,6 @@ Rails.application.routes.draw do
  
 
 
-
   resources :products do
     resources :favorites , only: [:index, :create, :destroy]
   end
