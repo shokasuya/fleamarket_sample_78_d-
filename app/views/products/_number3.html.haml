@@ -9,14 +9,12 @@
     .pickupContainer__productBox__lists
       .pickupContainer__productBox__lists__list
         - @brandProducts.each do |product|
-          = link_to product_path(product), class: "listBtn" do
+          = link_to product_path(product), class: "listBtn", data: {"turbolinks" => false} do
             %figure.pickupContainer__productBox__lists__list__a--img
               = image_tag product.images[0].image.url,class: "pickupContainer__productBox__lists__list__a--img__pice"
             .pickupContainer__productBox__lists__list__a__body
               %h3.pickupContainer__productBox__lists__list__a__body__name
                 = product.name
-              -# %ul#favoriteBtn
-              -#   = render partial: 'favorites/favorite', locals: { product: @product}
               .pickupContainer__productBox__lists__list__a__body__details
                 %ul
                   %li
@@ -39,14 +37,12 @@
     .pickupContainer__productBox__lists
       .pickupContainer__productBox__lists__list
         - @newProducts.each do |product|
-          = link_to product_path(product), class: "listBtn" do
+          = link_to product_path(product), class: "listBtn", data: {"turbolinks" => false} do
             %figure.pickupContainer__productBox__lists__list__a--img
               = image_tag product.images[0].image.url, alt: "image_url",class: "pickupContainer__productBox__lists__list__a--img__pice"
             .pickupContainer__productBox__lists__list__a__body
               %h3.pickupContainer__productBox__lists__list__a__body__name
                 = product.name
-              -# %ul#favoriteBtn
-              -#   = render partial: 'favorites/favorite', locals: { product: @product}
               .pickupContainer__productBox__lists__list__a__body__details
                 %ul
                   %li

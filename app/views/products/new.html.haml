@@ -24,20 +24,19 @@
                       %i.fas.fa-camera
                   .upload-label__text
                     ドラッグアンドドロップ
-                    %br
-                    またはクリックしてファイルをアップロード
+
         .listing-submission__no-image
 
       .listing-submission__sell__content
         .listing-submission__group
-          .listing-submission__content__head
+          .listing-submission__content__title
             = f.label :name,"商品名"
             %span.listing-submission__form-require
               必須
           = f.text_field :name, class:"name__text__field",placeholder: "必須 40文字まで"
         .listing-submission__no-product.no-product__name
         .listing-submission__text-area-group
-          .listing-submission__content__head
+          .listing-submission__content__title
             = f.label :description, "商品の説明"
             %span.listing-submission__form-require
               必須
@@ -48,9 +47,10 @@
         %h3.listing-submission__product__details__name 商品の詳細
         .listing-submission__details__form__box
           .listing-submission__details__form__category
-            .listing-submission__select--wrap
+            .listing-submission__content__title
               = f.label :category_id, "カテゴリー" ,class: "listing-submission__content__head"
               %span.listing-submission__form-require 必須
+            .listing-submission__select--wrap
               .sell__about__right__wrap-box.parent
                 %select#parent
                   %option{value: 0} --
@@ -63,27 +63,27 @@
               .listing-submission__no-product
 
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               = f.label :ブランド
               %span.listing-submission__form-require2 任意
             .listing-submission__select--wrap
               = f.text_field :brand, class: "brand__select", placeholder: "例）シャネル"
 
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               = f.label :size,"サイズ"
               %span.listing-submission__form-require 必須
-              .select--wrap
-                = f.select :size, Product.sizes_i18n.invert, {include_blank: '選択してください'}, class: "select-size"
-                .listing-submission__no-product.no-product__size
+            .select--wrap
+              = f.select :size, Product.sizes_i18n.invert, {include_blank: '選択してください'}, class: "select-size"
+              .listing-submission__no-product.no-product__size
                 
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               = f.label :condition,"商品の状態"
               %span.listing-submission__form-require 必須
-              .listing-submission__select--wrap
-                = f.select :condition, Product.conditions_i18n.invert, {include_blank: '選択してください'}, class: "select-condition"
-                .listing-submission__no-product.no-product__condition
+            .listing-submission__select--wrap
+              = f.select :condition, Product.conditions_i18n.invert, {include_blank: '選択してください'}, class: "select-condition"
+              .listing-submission__no-product.no-product__condition
 
       .listing-submission__delivery__form
         .listing-submission__delivery__top
@@ -92,7 +92,7 @@
             ?
         .listing-submission__delivery__form__box
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               = f.label :send_price,"配送料の負担"
               %span.listing-submission__form-require 必須
             .listing-submission__select--wrap
@@ -100,7 +100,7 @@
               .listing-submission__no-product.no-product__send_price
           
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               発送元の地域
               %span.listing-submission__form-require 必須
             .listing-submission__select--wrap
@@ -108,7 +108,7 @@
               .listing-submission__no-product.no-product__prefecture
 
           .listing-submission__details__form
-            .listing-submission__content__head
+            .listing-submission__content__title
               = f.label :ship_day,"発送までの日数"
               %span.listing-submission__form-require 必須
             .listing-submission__select--wrap

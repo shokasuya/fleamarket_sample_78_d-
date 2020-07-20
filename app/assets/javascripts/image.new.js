@@ -1,3 +1,4 @@
+document.addEventListener("turbolinks:load", function() {
 $(function(){
   var dataBox = new DataTransfer();
   var file_field = document.querySelector('input[type=file]')
@@ -96,4 +97,5 @@ $(function(){
     })
   })
   }
+})
 });
