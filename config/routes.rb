@@ -27,6 +27,9 @@ Rails.application.routes.draw do
  
 
 
+  resources :products do
+    resources :favorites , only: [:index, :create, :destroy]
+  end
   post '/products/:id/purchase',to: 'products#purchase'
   get 'products/new/mid_category', to: 'products#mid_category'
   get 'products/new/small_category', to: 'products#small_category'

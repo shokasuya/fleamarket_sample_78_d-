@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:logout]
+  before_action :set_product, only: [:show]
   def show
   end
 
@@ -17,5 +18,9 @@ class UsersController < ApplicationController
       :nickname,
       :introduction,
     )
+  end
+
+  def set_product
+    @product = Product.find_by(params[:id])
   end
 end

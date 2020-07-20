@@ -1,4 +1,4 @@
-window.addEventListener("load", function(){
+document.addEventListener("turbolinks:load", function() {
   $(function(){
     $( '.name__text__field' ).on('click', function(){
       let name = $(this).val();

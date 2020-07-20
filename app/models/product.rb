@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images, allow_destroy: true
+  has_many :favorites
+  has_many :favorites, through: :favorites, source: :user
 
   enum condition:   { brand_new: 0, near_to_unused: 1, no_scrach: 2, slight_scrach: 3, has_scrach: 4, bad_state: 5 }
   enum status:      { display: 0, sold: 1 }
