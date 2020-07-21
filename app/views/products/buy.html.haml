@@ -25,6 +25,7 @@
           %section.buy-content.buy-user-info
         .buy-content-inner
           %h3 支払方法
+          %section.buy-content.buy-user-info
         .buy-content-inner
           %h3 配送先
           %address.buy-user-info-text
@@ -39,5 +40,6 @@
             =current_user.last_name
             =current_user.first_name
           %section.buy-content.buy-user-info
-          =link_to purchased_product_path, class:"purchase" do
-            購入する
+          = form_with url: "/products/#{@product.id}/purchase", method: "post" do
+            :plain
+              <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_6be7aa4a70675cef52cc1233"></script>
