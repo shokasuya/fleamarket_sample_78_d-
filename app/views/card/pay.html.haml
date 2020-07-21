@@ -48,7 +48,9 @@
             =current_user.last_name
             =current_user.first_name
           %section.buy-content.buy-user-info
-          = submit_tag("購入する", class:"purchase")
+          = form_with url: "/products/#{@product.id}/purchase", method: "post" do
+            :plain
+              <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_6be7aa4a70675cef52cc1233"></script>
 .exhibit-page__footer
   .exhibit-page__footer__content
     .exhibit-page__footer__content__main
