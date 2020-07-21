@@ -106,5 +106,5 @@
       = link_to "商品を編集する", edit_product_path(@product), class: "edit-btn"
       = link_to "商品を削除する", product_path(params[:id]), method: :delete, class: "delete-btn"
     - else
-      = link_to buy_product_path(@product.id), class: "buy-btn" do
+      = link_to buy_product_path(@product.id), class: "buy-btn", data: {"turbolinks" => false} do
         購入画面へ
