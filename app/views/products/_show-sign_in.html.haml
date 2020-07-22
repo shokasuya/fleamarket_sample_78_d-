@@ -35,9 +35,6 @@
       .detail__price
         = @product.price
         円
-        = form_with url: "/products/#{@product.id}/purchase", method: "post" do
-          :plain
-            <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_6be7aa4a70675cef52cc1233"></script>
         %p (税込) 送料込み
 
       .detail__product__name
@@ -109,5 +106,5 @@
       = link_to "商品を編集する", edit_product_path(@product), class: "edit-btn"
       = link_to "商品を削除する", product_path(params[:id]), method: :delete, class: "delete-btn"
     - else
-      = link_to buy_product_path(@product.id), class: "buy-btn" do
+      = link_to buy_product_path(@product.id), class: "buy-btn", data: {"turbolinks" => false} do
         購入画面へ
