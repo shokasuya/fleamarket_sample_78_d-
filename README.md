@@ -95,3 +95,77 @@ ancestry| string|
 
 
 
+
+
+# fleamarket_sample_78_d-
+
+# Features
+## user-registration
+## credit-card-regiostration
+## login
+## product-listing
+## edit-product-information
+## product_details
+## favorite-function
+
+# fleamarket-copy
+
+
+# DEMO
+ 
+デモ動画や図解を載せる
+ 
+# Requirement
+ 
+* gem 'rails', '~> 6.0.0'
+* ruby '2.6.5'
+* gem 'mysql2', '>= 0.4.4'
+* gem 'puma', '~> 3.11'
+* gem 'sass-rails', '~> 5'
+* gem 'webpacker', '~> 4.0'
+* gem 'turbolinks', '~> 5'
+* gem gem 'jbuilder', '~> 2.7'
+* gem 'capistrano'
+* gem 'capistrano-rbenv'
+* gem 'capistrano-bundler'
+* gem 'capistrano-rails'
+* gem 'capistrano3-unicorn'
+* gem 'capistrano-rails-console'
+* gem 'rails-controller-testing'
+* gem 'faker'
+ 
+ 
+# Usage
+ 
+$ git clone https://github.com/shokasuya/fleamarket_sample_78_d-/pulls  
+$ cd fleamarket_sample_78_d-  
+$ bundle install  
+$ rails db:create  
+$ rails db:migrate  
+$ rails s  
+
+http://localhost:3000
+
+ 
+# Note
+ 
+## If you want to add images, please drag and drop
+ 
+# Author
+ 
+* sho_kasuya
+* 78-D-team
+* E-mail s78.kasuya.sho@gmail.com
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
