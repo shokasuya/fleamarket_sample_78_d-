@@ -4,27 +4,7 @@ $(document).on('turbolinks:load', function(){
   var previewCount = $('.preview').length;
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
-  // var dropZone = document.getElementById('drop-zone');
   $('.hidden-destroy').hide();
-
-  // dropZone.addEventListener('dragover', function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   $(".image-wrapper__image-box").css({'border': '1px solid rgb(204, 204, 204)','box-shadow': '0px 0px 4px'})
-  // },false);
-
-  // dropZone.addEventListener('dragleave', function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   $(".image-wrapper__image-box").css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'})
-  // },false);
-
-  // dropZone.addEventListener('drop', function(e) {
-  //   e.stopPropagation();
-  //   e.preventDefault();
-  //   $(".image-wrapper__image-box").css({'border': '1px dashed rgb(204, 204, 204)','box-shadow': '0px 0px 0px'});
-  //   var files = e.dataTransfer.files;
-
 
   $(document).on('change', '.js-file_group input', function(e) {
     $('.preview').parent().removeClass("img_field");
