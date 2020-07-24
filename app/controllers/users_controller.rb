@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:logout]
   before_action :set_product, only: [:show]
+    
   def show
+    
   end
 
 

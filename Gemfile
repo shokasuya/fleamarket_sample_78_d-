@@ -83,4 +83,6 @@ gem 'font-awesome-sass'
 gem 'ancestry'
 gem 'payjp'
 gem 'rails-i18n'
+gem "gretel"
 gem 'gon'
+

@@ -1,3 +1,6 @@
+.Pan
+  - breadcrumb :pay_new
+  = breadcrumbs separator: " &rsaquo;"
 .CardWrapper
   = form_tag(pay_card_index_path, method: :post, id: 'charge-form',  name: "inputForm",class: "CardForm") do
     %label.CardForm__label カード番号
