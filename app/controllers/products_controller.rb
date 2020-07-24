@@ -38,20 +38,26 @@ class ProductsController < ApplicationController
   end
 
 
-  
-
   def buy
     @address = Address.find_by(user_id: current_user.id)
   end
 
+  def edit
+    @images = @product.images
+    @product.images.build
+  end
 
   def update
-    if @product.update(product_params)
+    @images = @product.images
+    if params[:product][:images_attributes] != nil
+      @product.update(edit_product_params)
       redirect_to root_path
     else
+      parent = Category.where(ancestry: nil)
+      flash.now[:alert] = '未入力項目があります'
       render :edit
     end
-  end
+  end 
 
   def destroy
     if @product.destroy
@@ -107,6 +113,9 @@ class ProductsController < ApplicationController
     @categories = Category.where(ancestry: nil)
   end
 
-
+  def edit_product_params
+    params.require(:product).permit(:name, :price, :description, :size, :brand, :status, :condition, :send_price, 
+                                  :shipping_date, :category_id, :prefecture_id, images_attributes: [:image, :_destroy, :id])
+  end
 
 end
