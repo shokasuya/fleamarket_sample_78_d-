@@ -1,3 +1,6 @@
+.Pan
+  - breadcrumb :favorite
+  = breadcrumbs separator: " &rsaquo;"
 .item-favorite
   = render "users/mypage_side"
   .favorite__item-list
@@ -18,5 +21,5 @@
                     .item-price
                       = "￥#{favorite.product.price}"
       - else 
-        %h1
+        %h1.favorite_none
           お気に入りに追加した商品はありません

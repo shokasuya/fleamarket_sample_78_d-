@@ -1,3 +1,6 @@
+.Pan
+  - breadcrumb :show
+  = breadcrumbs separator: " &rsaquo;"
 = render "users/mypage_side"
 .mypage  
   %main.mypage-contents.clearfix
@@ -126,7 +129,7 @@
             過去の取引
         .tab-content-transaction
           %ul.tab-content-transaction__now
-            %li.tab-content-transaction__notfound 取引中の商品がありません
+            %li.tab-content-transaction__now--notfound 取引中の商品がありません
           %ul.tab-content-transaction__old.hide
             %li.transaction-item__link
               .transaction-item__link__logo

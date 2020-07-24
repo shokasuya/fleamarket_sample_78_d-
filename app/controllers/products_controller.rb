@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   require 'payjp'
-  before_action :set_product, except: [:index, :new, :create, :mid_category, :small_category, :buy, :purchase]
-  before_action :set_product_purchase, only: [:buy, :purchase]
+  before_action :set_product, except: [:index, :new, :create, :mid_category, :small_category]
   before_action :set_categories, only: [:edit, :update]
+  
   def index
     @product = Product.new
     @product.images.new
@@ -42,6 +42,8 @@ class ProductsController < ApplicationController
 
   def buy
     @address = Address.find_by(user_id: current_user.id)
+    @card = Card.find_by(user_id: current_user.id)
+  
   end
 
 
@@ -99,9 +101,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def set_product_purchase
-    @product = Product.find(params[:id])
-  end
+
 
   def set_categories
     @categories = Category.where(ancestry: nil)
