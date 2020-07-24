@@ -103,7 +103,7 @@
       = link_to "#", class: "links__category__related" do
         = "#{@product.category.parent.parent.name} をもっと見る"
     - if current_user.id == @product.user_id
-      = link_to "商品を編集する", edit_product_path(@product), class: "edit-btn"
+      = link_to "商品を編集する", edit_product_path(@product), class: "edit-btn", data: {"turbolinks" => false}
       = link_to "商品を削除する", product_path(params[:id]), method: :delete, class: "delete-btn"
     - else
       = link_to buy_product_path(@product.id), class: "buy-btn", data: {"turbolinks" => false} do

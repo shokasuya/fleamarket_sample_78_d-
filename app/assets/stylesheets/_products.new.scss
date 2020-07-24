@@ -82,6 +82,53 @@
     margin: 16px -4px 0px;
   }
 
+  #previews{
+
+    margin: 16px -4px 0px;
+  }
+
+  #image-box{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(245, 245, 245);
+    border: 2px dotted #888888;
+    height: 80%;
+  }
+
+  .image-wrapper__image-box__js.js-file_group{
+    input{
+      display: none;
+    }
+    width: 20%;
+    height: 43%;
+    text-align: center;
+    color: #2646f8;
+    .image-wrapper__image-box__js__label__image img_field{
+      width: 100%;
+      height: 100%;
+    }
+    .image-wrapper__image-box__js__label__image{
+      width: 100%;
+      height: 100%;
+    }
+    .js-remove{
+      background-color: #fff;
+      text-align: center;
+      font-weight: bold;
+      color: #2646f8;
+      box-shadow: 0 0 6px rgba(41, 41, 41, 0.2);
+    }
+
+  }
+  .image-wrapper__image-box__js__label__image__url{
+    font-size: 15px;
+    height: 30px;
+    width: 30px;
+    img{
+      color:#000000;
+    }
+  }
+
   .camera-box{
     padding: 40px;
     width: 100%;
